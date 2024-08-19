@@ -23,41 +23,6 @@ Welcome to the Tic Tac Toe game! This project is a browser-based game that allow
 - **Database:** PostgreSQL (or other SQL databases)
 - **Deployment
 
-## Project Structure
-
-```
-/tic-tac-toe/
-├── public/
-│   ├── index.html
-│   ├── styles/
-│   │   └── main.css
-│   └── scripts/
-│       ├── gameLogic.js
-│       ├── socketManager.js
-│       └── auth.js
-├── server/
-│   ├── app.py
-│   ├── models.py
-│   ├── routes.py
-│   ├── static/
-│   │   ├── styles/
-│   │   │   └── main.css
-│   │   └── scripts/
-│   │       ├── gameLogic.js
-│   │       ├── socketManager.js
-│   │       └── auth.js
-│   └── templates/
-│       └── index.html
-├── tests/
-│   ├── test_gameLogic.py
-│   ├── test_socketManager.py
-│   ├── test_auth.py
-│   └── test_routes.py
-├── .gitignore
-├── README.md
-└── requirements.txt
-```
-
 ## Getting Started
 
 Follow these steps to set up and run the Tic Tac Toe game locally.
