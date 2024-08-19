@@ -33,6 +33,7 @@ Follow these steps to set up and run the Tic Tac Toe game locally.
 
 ### 2. Set Up the Back-End
 
+### 3. Set Up the Front-End
 
 ### 4. Running the Game
 
