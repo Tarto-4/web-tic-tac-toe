@@ -1,6 +1,3 @@
-Certainly! Below is a detailed `README.md` file for your tic-tac-toe game project. It includes instructions on setting up and running the game, as well as an overview of the project's features and structure.
-
-```markdown
 # Tic Tac Toe Game
 
 ## Overview
