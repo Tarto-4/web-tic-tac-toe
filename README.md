@@ -17,7 +17,7 @@ Welcome to the Tic Tac Toe game! This project is a browser-based game that allow
 - **Front-End:** HTML, CSS, JavaScript
 - **Back-End:** Python with Flask
 - **Real-Time Communication:** SOCKET.IO
-- **Database:** PostgreSQL (or other SQL databases)
+- **Database:** PostgreSQL 
 - **Deployment
 
 ## Getting Started
