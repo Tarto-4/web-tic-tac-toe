@@ -12,11 +12,25 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 socketio = SocketIO(app)
 
-class Game(db.Model):
-	id = db.Column(db.Integer, primary_key=True)
-	board = db.Column(db.String(9), nullable=False, default=' ' * 9)
-	current_player = db.Column(db.String(1), nullable=False, default='X')
-	winner = db.Column(db.String(1), nullable=True)
+# Game state
+game_state = {
+	'board': ['' for _ in range(9)],
+	'current_turn': 'X',
+	'winner': None
+}
+
+def check_winner(board):
+	winning_combinations = [
+		[0, 1, 2], [3, 4, 5], [6, 7, 8],  # Rows
+		[0, 3, 6], [1, 4, 7], [2, 5, 8],  # Columns
+		[0, 4, 8], [2, 4, 6]              # Diagonals
+	]
+	for combo in winning_combinations:
+		if board[combo[0]] == board[combo[1]] == board[combo[2]] and board[combo[0]] != '':
+			return board[combo[0]]
+	if '' not in board:
+		return 'Draw'
+	return None
 
 @app.route('/')
 def index():
@@ -24,9 +38,14 @@ def index():
 
 @socketio.on('make_move')
 def handle_make_move(data):
-	index = data['index']
-	player = data['player']
-	emit('move_made', {'index': index, 'player': player, 'nextPlayer': 'O' if player == 'X' else 'X'}, broadcast=True)
+	global game_state
+	position = data['position']
+	if game_state['board'][position] == '' and game_state['winner'] is None:
+		game_state['board'][position] = game_state['current_turn']
+		game_state['winner'] = check_winner(game_state['board'])
+		if game_state['winner'] is None:
+			game_state['current_turn'] = 'O' if game_state['current_turn'] == 'X' else 'X'
+		emit('update_board', game_state, broadcast=True)
 
 if __name__ == '__main__':
 	socketio.run(app, debug=True)
