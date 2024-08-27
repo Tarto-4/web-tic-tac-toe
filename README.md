@@ -25,12 +25,6 @@ This is a web-based Tic-Tac-Toe game built with Flask for the backend and plain 
    git clone https://github.com/tarto-4/tic-tac-toe.git
    cd tic-tac-toe
    ```
-Here is a [`README.md`](command:_github.copilot.openRelativePath?%5B%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fc%3A%2FUsers%2Fthato%2FOneDrive%2FDocuments%2FGitHub%2Fweb-tic-tac-toe%2FREADME.md%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%5D "c:\Users\thato\OneDrive\Documents\GitHub\web-tic-tac-toe\README.md") file for your Tic-Tac-Toe game:
-
-```markdown
-# Tic-Tac-Toe Game
-
-This is a web-based Tic-Tac-Toe game built with Flask for the backend and plain HTML, CSS, and JavaScript for the frontend. The game supports real-time multiplayer functionality using Socket.IO.
 
 ## Features
 
