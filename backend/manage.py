@@ -1,4 +1,4 @@
-from app import app, db
+from backend.app import app, db
 from flask_migrate import MigrateCommand
 from flask_script import Manager
 
