@@ -16,7 +16,8 @@ socketio = SocketIO(app)
 game_state = {
 	'board': ['' for _ in range(9)],
 	'current_turn': 'X',
-	'winner': None
+	'winner': None,
+	'scoreboard': {'X': 0, 'O': 0}
 }
 
 def check_winner(board):
@@ -39,13 +40,24 @@ def index():
 @socketio.on('make_move')
 def handle_make_move(data):
 	global game_state
-	position = data['position']
+	position = int(data['position'])  # Convert position to integer
 	if game_state['board'][position] == '' and game_state['winner'] is None:
 		game_state['board'][position] = game_state['current_turn']
 		game_state['winner'] = check_winner(game_state['board'])
-		if game_state['winner'] is None:
+		if game_state['winner']:
+			if game_state['winner'] != 'Draw':
+				game_state['scoreboard'][game_state['winner']] += 1
+		else:
 			game_state['current_turn'] = 'O' if game_state['current_turn'] == 'X' else 'X'
 		emit('update_board', game_state, broadcast=True)
+
+@socketio.on('reset_game')
+def handle_reset_game():
+	global game_state
+	game_state['board'] = ['' for _ in range(9)]
+	game_state['current_turn'] = 'X'
+	game_state['winner'] = None
+	emit('update_board', game_state, broadcast=True)
 
 if __name__ == '__main__':
 	socketio.run(app, debug=True)
