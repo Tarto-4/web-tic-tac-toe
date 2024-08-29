@@ -1,15 +1,23 @@
 const socket = io();
 
 const cells = document.querySelectorAll('.cell');
+const status = document.getElementById('status');
+const resetButton = document.getElementById('resetButton');
+const scoreX = document.getElementById('scoreX');
+const scoreO = document.getElementById('scoreO');
 let currentPlayer = 'X';
 
 cells.forEach(cell => {
     cell.addEventListener('click', handleCellClick);
 });
 
+resetButton.addEventListener('click', () => {
+    socket.emit('reset_game');
+});
+
 function handleCellClick(event) {
     const cell = event.target;
-    const index = cell.getAttribute('data-index');
+    const index = cell.getAttribute('data-cell');
     if (cell.textContent === '') {
         socket.emit('make_move', { index: index, player: currentPlayer });
     }
