@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #192a32;
+}
+.App .App-header h1 {
+    color: #9ff;
+    box-shadow: 0px 3px 3px  rgb(8, 8, 8);
+    padding: 3px 8px;
+  }
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .status {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #9ff;
+  }
+  
+  .board {
+  display: grid;
+	grid-template-columns: repeat(3, 100px);
+	grid-gap: 15px;
+  }
+  
+  .board-row {
+    display: grid;
+	grid-template-columns: repeat(3, 100px);
+	grid-gap: 15px;   display: grid;
+	grid-template-columns: repeat(3, 100px);
+	grid-gap: 15px;
+  }
+  
+  .square {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0px 5px 5px  black;
+    background-color: #274352;
+    transition: background-color 0.3s;
+  }

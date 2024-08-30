@@ -1,62 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Web Tic Tac Toe</title>
-	<link rel="stylesheet" href="style.css">
-</head>
-<body>
-	<div class="board">
-		<div class="cell" data-index="0"></div>
-		<div class="cell" data-index="1"></div>
-		<div class="cell" data-index="2"></div>
-		<div class="cell" data-index="3"></div>
-		<div class="cell" data-index="4"></div>
-		<div class="cell" data-index="5"></div>
-		<div class="cell" data-index="6"></div>
-		<div class="cell" data-index="7"></div>
-		<div class="cell" data-index="8"></div>
-	</div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
-</head>
-<body>
-	<h1>Tic-Tac-Toe</h1>
-	<div class="board" id="board">
-		<div class="cell" data-cell="0"></div>
-		<div class="cell" data-cell="1"></div>
-		<div class="cell" data-cell="2"></div>
-		<div class="cell" data-cell="3"></div>
-		<div class="cell" data-cell="4"></div>
-		<div class="cell" data-cell="5"></div>
-		<div class="cell" data-cell="6"></div>
-		<div class="cell" data-cell="7"></div>
-		<div class="cell" data-cell="8"></div>
-	</div>
-	<h2 id="status"></h2>
-	<script>
-		const socket = io();
-
-		const board = document.getElementById('board');
-		const status = document.getElementById('status');
-
-		board.addEventListener('click', (event) => {
-			if (event.target.classList.contains('cell')) {
-				const cellIndex = event.target.getAttribute('data-cell');
-				socket.emit('make_move', { position: cellIndex });
-			}
-		});
-
-		socket.on('update_board', (game_state) => {
-			game_state.board.forEach((value, index) => {
-				board.children[index].textContent = value;
-			});
-			if (game_state.winner) {
-				status.textContent = game_state.winner === 'Draw' ? 'It\'s a Draw!' : `${game_state.winner} Wins!`;
-			} else {
-				status.textContent = `Current Turn: ${game_state.current_turn}`;
-			}
-		});
-	</script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial Code</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
